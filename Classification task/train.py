@@ -213,7 +213,6 @@ def val(model):
     # plot_confusion_matrix(cm,savename='./png/test2.png')
     label_onehot = np.eye(num_classes)[np.array(label).astype(np.int32).tolist()]
     fpr, tpr, thresholds = roc_curve(label_onehot.ravel(), possbilitys.ravel())
-    #index, optimal_threshold = youden(tpr, fpr, thresholds)
     index = np.argmax(tpr - fpr)
     optimal_threshold = thresholds[index]
     auc_value = auc(fpr, tpr)
@@ -259,7 +258,6 @@ def test(model):
     # plot_confusion_matrix(cm, savename='./png/resnet101.png')
     label_onehot = np.eye(num_classes)[np.array(label).astype(np.int32).tolist()]
     fpr, tpr, thresholds = roc_curve(label_onehot.ravel(), possbilitys.ravel())
-    #index, optimal_threshold = youden(tpr, fpr, thresholds)
     index = np.argmax(tpr - fpr)
     optimal_threshold = thresholds[index]
     auc_value = auc(fpr, tpr)
